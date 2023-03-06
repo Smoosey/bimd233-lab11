@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pacific Northwest Stock Dashboard</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <style>
+            body {
+                background-image: url("https://i.imgur.com/4G44vAV.jpg");
+                background-size: cover;
+            }
+            h1 {
+                text-align: center;
+                margin-top: 50px;
+            }
+            table {
+                margin-top: 50px;
+                font-size: 18px;
+            }
+            th {
+                background-color: #007bff;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+        <h1>Pacific Northwest Stock Dashboard</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Company Name</th>
+                <th>Market Cap</th>
+                <th>Sales</th>
+                <th>Profit</th>
+                <th>Number of Employees</th>
+            </tr>
+            </thead>
+            <tbody id="stockData">
+            </tbody>
+        </table>
+        </div>
+        <script>
+            const stockData = [
+                {
+                    rank: 1,
+                    company: "Microsoft",
+                    marketCap: "381.7 B",
+                    sales: "86.8 B",
+                    profit: "22.1 B",
+                    employees: 128000
+                },
+                {
+                    rank: 2,
+                    company: "Symetra Financial",
+                    marketCap: "2.7 B",
+                    sales: "2.2 B",
+                    profit: "254.4 M",
+                    employees: 30400
+                },
+                {
+                    rank: 3,
+                    company: "Micron Technology",
+                    marketCap: "$37.6 B",
+                    sales: "$16.4 B",
+                    profit: "$3.0 B",
+                    employees: 30400
+                },
+                {
+                    rank: 4,
+                    company: "F5 Networks",
+                    marketCap: "$9.5 B",
+                    sales: "$1.7 B",
+                    profit: "$311.2 M",
+                    employees: 3834
+                },
+                {
+                    rank: 5,
+                    company: "Expedia",
+                    marketCap: "$10.8 B",
+                    sales: "$5.8 B",
+                    profit: "$398.1 M",
+                    employees: 18210
+                },
+                {
+                    rank: 6,
+                    company: "Nautilus",
+                    marketCap: "$476 M",
+                    sales: "$274.4 M",
+                    profit: "$18.8 M",
+                    employees: 340
+                },
+                {
+                    rank: 7,
+                    company: "Heritage Financial",
+                    marketCap: "$531 M",
+                    sales: "$137.6 M",
+                    profit: "$21 M",
+                    employees: 748
+                },
+                {
+                    rank: 8,
+                    company: "Cascade Microtech",
+                    marketCap: "$239 M",
+                    sales: "$136 M",
+                    profit: "$9.9 M",
+                    employees: 449
+                },
+                {
+                    rank: 9,
+                    company: "Nike",
+                    marketCap: "$83.1 B",
+                    sales: "$27.8 B",
+                    profit: "$2.7 B",
+                    employees: 56500
+                },
+                {
+                    rank: 10,
+                    company: "Alaska Air Group",
+                    marketCap: "$7.9 B",
+                    sales: "$5.4 B",
+                    profit: "$605 M",
+                    employees: 13952
+                }
+            ];
+
+            const stockTable = document.getElementById("stockData");
+
+            stockData.forEach((stock, index) => {
+                const row = stockTable.insertRow();
+                row.classList.add(index % 2 == 0 ? "even" : "odd");
+
+                const rankCell = row.insertCell(0);
+                rankCell.innerText = stock.rank;
+
+                const companyCell = row.insertCell(1);
+                companyCell.innerText = stock.company;
+
+                const marketCapCell = row.insertCell(2);
+                marketCapCell.innerText = stock.marketCap;
+
+                const salesCell = row.insertCell(3);
+                salesCell.innerText = stock.sales;
+
+                const profitCell = row.insertCell(4);
+                profitCell.innerText = stock.profit;
+
+                const employeesCell = row.insertCell(5);
+                employeesCell.innerText = stock.employees;
+            });
+        </script>
+    </body>
+</html>

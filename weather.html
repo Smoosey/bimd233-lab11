@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weather</title>
+    </head>
+    <body>
+        <h1>Weather Forecast</h1>
+        <img src="weatherGraph.png" alt="Weather Graph">
+        <script>
+            // Array of high and low temperatures for the next 5 days
+            var temps = [
+                {day: "fri", hi: 82, lo: 55},
+                {day: "sat", hi: 75, lo: 52},
+                {day: "sun", hi: 69, lo: 52},
+                {day: "mon", hi: 69, lo: 48},
+                {day: "tue", hi: 68, lo: 51}
+            ];
+
+            // Function to find and print the temperature averages
+            function printTempAverages() {
+                // Calculate the average high temp
+                var avgHiTemp = temps.reduce(function(total, temp) {
+                    return total + temp.hi;
+                }, 0) / temps.length;
+
+                // Calculate the average low temp
+                var avgLoTemp = temps.reduce(function(total, temp) {
+                    return total + temp.lo;
+                }, 0) / temps.length;
+
+                // Calculate the temp average for the 5 days
+                var tempAverage = (avgHiTemp + avgLoTemp) / 2;
+
+                // Print the results to the web page
+                document.body.innerHTML += "<p>Average high temp: " + avgHiTemp + "</p>";
+                document.body.innerHTML += "<p>Average low temp: " + avgLoTemp + "</p>";
+                document.body.innerHTML += "<p>Temp average for the next 5 days: " + tempAverage + "</p>";
+            }
+
+            // Call the function to print the temperature averages
+            printTempAverages();
+        </script>
+    </body>
+</html>

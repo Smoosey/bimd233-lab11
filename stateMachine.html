@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>State Machine Example</title>
+  </head>
+  <body>
+    <h1>State Machine Example</h1>
+    <p id="message">Current state: Idle</p>
+    <button onclick="handleCommand('prev')">Prev</button>
+    <button onclick="handleCommand('home')">Home</button>
+    <button onclick="handleCommand('skip')">Skip</button>
+    <button onclick="handleCommand('next')">Next</button>
+
+    <script>
+      var state = 'Idle';
+      var cmd = 'nop'; // 'nop' stands for "no operation"
+
+      function handleCommand(command) {
+        switch (command) {
+          case 'prev':
+            if (state === 'Idle') {
+              state = 'S4';
+            } else if (state === 'S1') {
+              state = 'Idle';
+            } else if (state === 'S2') {
+              state = 'S1';
+            } else if (state === 'S3') {
+              state = 'S2';
+            } else if (state === 'S4') {
+              state = 'S3';
+            }
+            break;
+          case 'home':
+            state = 'Idle';
+            break;
+          case 'skip':
+            if (state === 'Idle') {
+              state = 'S2';
+            } else if (state === 'S1') {
+              state = 'S3';
+            } else if (state === 'S2') {
+              state = 'S4';
+            } else if (state === 'S3') {
+              state = 'S1';
+            } else if (state === 'S4') {
+              state = 'Idle';
+            }
+            break;
+          case 'next':
+            if (state === 'Idle') {
+              state = 'S1';
+            } else if (state === 'S1') {
+              state = 'S2';
+            } else if (state === 'S2') {
+              state = 'S3';
+            } else if (state === 'S3') {
+              state = 'S4';
+            } else if (state === 'S4') {
+              state = 'S1';
+            }
+            break;
+          default:
+            break;
+        }
+
+        var message = document.getElementById('message');
+        message.innerHTML = 'Current state: ' + state;
+      }
+
+      function getUserInput() {
+        return prompt('Enter a command: ' + state, 'next');
+      }
+
+      do {
+        cmd = getUserInput();
+        handleCommand(cmd);
+      } while (cmd !== 'exit' && cmd !== 'quit');
+    </script>
+  </body>
+</html>
